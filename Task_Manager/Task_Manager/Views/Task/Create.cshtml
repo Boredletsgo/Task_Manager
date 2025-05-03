@@ -1,0 +1,85 @@
+﻿@model Task_Manager.Models.TaskItem
+
+@{
+    ViewData["Title"] = "Add New Task";
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+
+
+<h2>Add New Task</h2>
+<style>
+    <style >
+    .task-form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .task-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .task-form label {
+        font-weight: 500;
+        color: #555;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .task-form input.form-control,
+    .task-form textarea.form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+    }
+
+        .task-form input.form-control:focus,
+        .task-form textarea.form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    .task-form input[type="checkbox"] {
+        transform: scale(1.2);
+        margin-left: 5px;
+    }
+
+    .task-form button.btn-success {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+</style>
+
+
+</style>
+<form asp-action="Create" method="post" class="task-form">
+    <div class="form-group">
+        <label>Title</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Is Completed</label>
+        <input asp-for="IsCompleted" type="checkbox" />
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Create</button>
+</form>

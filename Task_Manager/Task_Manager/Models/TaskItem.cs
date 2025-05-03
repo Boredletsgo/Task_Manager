@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Task_Manager.Models
+{
+    public class TaskItem
+    {
+        [Key] // Makes it the primary key
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Auto-increment
+        public int Id { get; set; }
+
+        public string? Title { get; set; }
+
+        public string? Description { get; set; }
+
+        public bool IsCompleted { get; set; }
+    }
+}

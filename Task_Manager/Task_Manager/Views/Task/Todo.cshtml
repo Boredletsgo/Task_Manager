@@ -1,0 +1,85 @@
+﻿
+@model List<Task_Manager.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "To-Do List";
+    Layout = "~/Views/Shared/_TaskLayout.cshtml";
+}
+
+
+<h2>To-Do List</h2>
+<style>
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    table.table {
+        width: 90%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th, .table td {
+        padding: 15px 20px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .table th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    .btn-warning {
+        font-size: 14px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        color: #fff;
+        background-color: #ffc107;
+        border: none;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+</style>
+
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@(task.IsCompleted ? "Completed" : "Pending")</td>
+                <td>
+                    <a href="/Task/Edit/@task.Id" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
